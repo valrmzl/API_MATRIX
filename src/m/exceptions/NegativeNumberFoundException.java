@@ -1,5 +1,16 @@
 package m.exceptions;
 
+/**
+ * La clase NegativeNumberFoundException extiende a Exception de java.lang
+ * Esta excepción indica que un número negativo no puede ser 
+ * recibido/ejecutado
+ * Por ejemplo, esta excepción seria lanzada
+ * si se crea una matriz con un valor de fila/columna negativo
+ * son los suficinetes  para realizar una operación.
+ * @author Cinthya G, Iker J, Valeria R
+ *
+ *
+ */
 public class NegativeNumberFoundException extends Exception {
 	private double negativeNumber;
 	public NegativeNumberFoundException(double negativeNumber) {

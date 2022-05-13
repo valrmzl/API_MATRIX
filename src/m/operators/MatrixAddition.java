@@ -2,10 +2,18 @@ package m.operators;
 import m.exceptions.*;
 import m.matrices.*;
 
+/**
+ * MatrixAddition extiende a la clase abstracta BinaryOperation
+ * (Operación lineal, se calcula sumando los elementos que ocupan la misma posición)
+ * @author Cinthya G, Iker J, Valeria R
+ *
+ */
 public class MatrixAddition extends BinaryOperator {
+	
 public MatrixAddition() {
 		
 	}
+
 
 	@Override
 	public Matrix calc(Matrix m1, Matrix m2) throws NegativeNumberFoundException,IllegalMatrixCalcException {

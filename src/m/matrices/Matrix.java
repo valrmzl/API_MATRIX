@@ -3,6 +3,12 @@ import m.files.*;
 import m.exceptions.*;
 import m.operators.*;
 
+
+/**
+ *  Esta clase describe el funcionamiento de matrices a través de arreglos bidimensionales
+ * @author Cinthya G, Iker J, Valeria R
+ *
+ */
 public class Matrix {
 	
 public Matrix() {
@@ -14,6 +20,11 @@ public Matrix() {
 	private double[][] arrayM;
 	private boolean isSquare;
 
+	/**
+	 * Crea una matriz  de 2 dimensiones (cuadrada) inicializada en ceros 
+	 * @param row  (Número de filas en la matriz; también corresponde al de columnas)
+	 * @throws NegativeNumberFoundException (Si la dimensión de la matriz no es positiva)
+	 */
 	public Matrix(int row) throws NegativeNumberFoundException  {
 		if(row<0)
 			throw new NegativeNumberFoundException(row);
@@ -24,6 +35,12 @@ public Matrix() {
 		
 	}
 	
+	/**
+	 * Crea una matriz de 2 dimensiones inicializada en ceros
+	 * @param row (Número de filas en la matriz)
+	 * @param column (Número de columnas en la matriz)
+	 * @throws NegativeNumberFoundException (Si la dimensión de la matriz no es positiva)
+	 */
 	
 	public Matrix(int row, int column) throws NegativeNumberFoundException {
 		if(row<0)
@@ -37,12 +54,26 @@ public Matrix() {
 		addZeros();
 		
 	}
+	
+	/**
+	 * Inserta un valor en la matriz a partir de la coordenada brindada
+	 * @param row (Posición fila)
+	 * @param column (Posición columna)
+	 * @param value (Valor a insertar)
+	 */
 
 
-	public void setValue(int row, int column,double value)   {
+	public  void setValue(int row, int column,double value)   {
 		this.arrayM[row][column]= value;
 		
 	}
+	
+	/**
+	 * Regresa el valor solicitado de una matriz a partir de su coordenada
+	 * @param row (Posición fila)
+	 * @param column (Posición columna)
+	 * @return Valor indicado a partir de la fila y columna
+	 */
 
 	
 	public double getValue(int row, int column) {
@@ -60,6 +91,13 @@ public Matrix() {
 	                    return false;     
 		return true;
 	}
+	
+	/**
+	 * Verifica si se trata de una Matriz Identidad (Debe de ser una matriz cuadrada, donde todos sus eleentos
+	 * son ceros (0) menos los elementos de la diganolas principal que son unos (1))
+	 * @return <b>true</b> si se trata de una matriz identidad 
+	 * <b>false</b> en otro caso
+	 */
 
 
 	public boolean isIdentity() {
@@ -75,6 +113,13 @@ public Matrix() {
 	                }
 		 return true;         
 	}
+	
+	/**
+	 * Verifica si se trata de una Matriz Triangular Superior (Debe de ser
+	 * una matriz cuadrada que tiene un triángulo de ceros (0) por debaho de la diagonal principal)
+	 * @return <b>true</b> si se trata de una matriz triangular superior 
+	 * <b>false</b> en otro caso
+	 */
 
 
 	public boolean isTriangularSup() {
@@ -89,6 +134,13 @@ public Matrix() {
         }
 		return true;
 	}
+	
+	/**
+	 * Verifica si se trata de una Matriz Triangular Inferior (Debe de ser una matriz cuadrada
+	 *  que tiene un triángulo de ceros (0) por encima de la diagonal principal)
+	 * @return <b>true</b> si se trata de una matriz triangular inferior 
+	 * <b>false</b> en otro caso
+	 */
 
 
 	public boolean isTriangularInf() {
@@ -103,6 +155,13 @@ public Matrix() {
         }
 		return true;
 	}
+	
+	/**
+	 * Verifica si se trata de una Matriz Nula (Debe de ser una matriz donde todos sus elemenos 
+	 * son igual a cero (0))
+	 * @return <b>true</b> si se trata de una matriz nula 
+	 * <b>false</b> en otro caso
+	 */
 
 	public boolean isNull() {
 		
@@ -112,12 +171,21 @@ public Matrix() {
                 		return false;
 	return true;
 	}
-
+	
+	/**
+	 * Obtiene el número de filas contenidas en la Matriz
+	 * @return el número de filas contenidas en la Matriz
+	 */
 
 	public int getRow() {
 
 		return this.row;
 	}
+	
+	/**
+	 * Obtiene el número de columnas contenidas en la matriz
+	 * @return el número de columnas contenidas en la matriz
+	 */
 
 
 	public int getColumn() {
@@ -125,10 +193,17 @@ public Matrix() {
 		return this.column;
 	}
 	
+	/**
+	 *  Verifica si se trata de una Matriz Cuadrada
+	 * @return <b>true</b> si se trata de una matriz cudrada 
+	 * <b>false</b> en otro caso
+	 */
+	
 	public boolean getIsSquare() {
 		return this.isSquare;
 	}
 	
+
 	public double[][] getArrayM(){
 		return this.arrayM;
 	}
@@ -183,6 +258,10 @@ public Matrix() {
 				this.isSquare=true;
 	}
 	
+	/**
+	 * Inserta el valor cero (0) en cada posición de la matriz 
+	 */
+	
 	public void addZeros()  {
 		for (int i = 0; i < getRow(); i++)
             for (int j = 0; j < getColumn(); j++) {
@@ -202,7 +281,15 @@ public Matrix() {
 		return matrixStr;
 	}
 	
-	public boolean equalsSize(Matrix m) {
+	/**
+	 * Verifica las dimensiones de dos (2) matrices
+	 * @param m (Matriz m2)
+	 * @return <b>true</b> si ambas matrices son de las mismas dimensiones 
+	 * <b>false</b> en otro caso
+	 */
+	 
+	
+	public  boolean equalsSize(Matrix m) {
 		for(int i=0; i<this.arrayM.length;i++) {
 			if(this.arrayM.length!= m.arrayM.length ||
 				this.arrayM[i].length!= m.arrayM[i].length

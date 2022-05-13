@@ -1,6 +1,13 @@
 package m.operators;
 import m.exceptions.*;
 import m.matrices.*;
+
+/**
+ * MatrixSubstraction extiende a la clase abstracta BinaryOperation
+ * (Operación lineal, se calcula restando los elementos que ocupan la misma posición)
+ * @author Cinthya G, Iker J, Valeria R
+ *
+ */
 public class MatrixSubstraction extends BinaryOperator {
 public MatrixSubstraction() {
 		

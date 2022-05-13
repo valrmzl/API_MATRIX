@@ -1,6 +1,15 @@
 package m.operators;
 import m.exceptions.NegativeNumberFoundException;
 import m.matrices.Matrix;
+
+/**
+ * MatrixAdjoint extiende a la clase abstracta UnaryOperator
+ * (Una matriz adjunta es el resultado de cambiar el signo
+ * del determinante de cada uno de los menores de la matriz 
+ * original en función de la posiicón del menor dentrp de la matriz)
+ * @author Cinthya G, Iker J, Valeria R
+ *
+ */
 public class MatrixAdjoint extends UnaryOperator {
 	
 	public MatrixAdjoint() {
