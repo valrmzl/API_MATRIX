@@ -80,6 +80,12 @@ public Matrix() {
 		return arrayM[row][column];
 	}
 
+	/**
+	 * Verifica si se trata de una Matriz Simétrica (Deebe de ser una matriz cuadrada y es 
+	 * idéntica a la matriz después de haber cambiado las filas por columnas)
+	 * @return <b>true</b> si se trata de una matriz simétrica 
+	 * <b>false</b> en otro caso
+	 */
 
 	public boolean isSimmetric() {
 		if(!isSquare)
@@ -203,21 +209,44 @@ public Matrix() {
 		return this.isSquare;
 	}
 	
-
+	/**
+	 * Obtiene la matriz bidemensional correspondiente a la matriz
+	 * @return matriz bidemensional
+	 */
 	public double[][] getArrayM(){
 		return this.arrayM;
 	}
 	
-	public void addColumn() {
+	/**
+	 * Añade una nueva columna a la matriz
+	 * @throws NegativeNumberFoundException (Si la dimensión de la matriz no es positiva)
+	 */
+	public void addColumn() throws NegativeNumberFoundException{
+		Matrix temp = new Matrix(getRow(),getColumn()+1);
+		for(int i =0;i<getRow();i++)
+			for(int j=0;j<getColumn();j++) {
+				temp.setValue(i, j, arrayM[i][j]);
+			}
+		this.arrayM=temp.arrayM;
+        this.setColumn(getColumn()+1);
+        if(getRow()!=getColumn())
+            this.isSquare=false;
+        else 
+            this.isSquare=true;
+	     
 
 	}
+	
+	/**
+	 * Establece el número de columnas para una matriz
+	 * @param column (cantidad de columnas)
+	 */
 	
 	private void setColumn(int column) {
 		this.column = column;
 	}
 	
-		public void addRow() throws NegativeNumberFoundException {
-		
+	public void addRow() throws NegativeNumberFoundException {
 		Matrix temp = new Matrix(getRow()+1,getColumn());
 		for(int i =0;i<getRow();i++)
 			for(int j=0;j<getColumn();j++) {
@@ -232,15 +261,40 @@ public Matrix() {
 				this.isSquare=true;
 	}
 	
-	
+	/**
+	 * Establece el número de filas para una matriz
+	 * @param row (cantidad de filas)
+	 */
 	private void setRow(int row) {
 		this.row = row;
 	}
 
-	public void deleteColumn() {
+	
+	/**
+	 * Elimina toda la columna de una matriz
+	 * @throws NegativeNumberFoundException (Si se trata de eliminar una columna con un número negativo)
+	 */
+	public void deleteColumn() throws NegativeNumberFoundException {
+		Matrix temp = new Matrix(getRow(),getColumn()-1);
+		for(int i =0;i<getRow();i++)
+			for(int j=0;j<getColumn()-1;j++) {
+                temp.setValue(i, j, arrayM[i][j]);
+            }
 		
+		this.arrayM=temp.arrayM;
+        this.setColumn(getColumn()-1);
+
+        if(getRow()!=getColumn())
+            this.isSquare=false;
+        else
+            this.isSquare=true;
+
 	}
 	
+	/**
+	 * Elimina toda la fila de una matriz 
+	 * @throws NegativeNumberFoundException (Si se trata de eliminar una columna con un número negativo)
+	 */
 	public void deleteRow() throws NegativeNumberFoundException {
 			
 		Matrix temp = new Matrix(getRow()-1,getColumn());
@@ -269,6 +323,10 @@ public Matrix() {
             }
 	}
 
+	
+	/**
+	 * Formato de impresión para una Matriz
+	 */
 	@Override
 	public String toString() {
 		String matrixStr = "";
@@ -298,14 +356,16 @@ public Matrix() {
 		return true;
 	}
 	
+	
+	
 	public void load(MatrixLoader loader, String file) {
 		if(loader instanceof CSVLoader) {
 			CSVLoader loadedCSV = new CSVLoader();
 			loadedCSV.toLoad(file, this);
-			
 		}
 		else if(loader instanceof JSonLoader) {
-			System.out.println("Es json");
+			JSonLoader loadedJSon = new JSonLoader();
+			loadedJSon.toLoad(file, this);
 		}
 	}
 	
@@ -313,6 +373,10 @@ public Matrix() {
 		if(saver instanceof CSVSaver) {
 			CSVSaver savedCSV = new CSVSaver();
 			savedCSV.toSave(file, this);
+		}
+		else if(saver instanceof JSonSaver) {
+			JSonSaver savedJSon = new JSonSaver();
+			savedJSon.toSave(file, this);
 		}
 
 	}

@@ -2,10 +2,20 @@ package m.files;
 import java.io.*;
 import m.matrices.*;
 
+
+/**
+ * Guarda un archivo .csv separando los valores por comas.
+ * @author Cinthya G, Iker J, Valeria R
+ *
+ */
 public class CSVSaver extends MatrixSaver {
 	
 private String[][] doubleToStr;
 	
+
+/**
+ * Implementación abstracta de toSave para tipo .CSV
+ */
 	public void toSave(String file, Matrix m) {
 		
 		setFile(file);

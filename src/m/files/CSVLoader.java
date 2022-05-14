@@ -3,7 +3,17 @@ package m.files;
 import java.io.*;
 import m.matrices.*;
 
+/**
+ * Carga un archivo .csv al convertir su contenido en un arreglo
+ *  de tipo String eventualmente convertido a valores de números reales.
+ * @author Cinthya G, Iker J, Valeria R
+ *
+ */
 public class CSVLoader extends MatrixLoader {
+	
+	/**
+	 * Implementación abstracta de toLoad para tipo .CSV
+	 */
 public void toLoad(String file, Matrix m) {
 		
 		int c = 0, r = 0;

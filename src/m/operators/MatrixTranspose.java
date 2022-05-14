@@ -1,7 +1,14 @@
 package m.operators;
 import m.matrices.Matrix;
 import m.exceptions.*;
-
+/**
+ * MatrixTranspose extiende a la clase UnaryOperator
+ * (Acción de seleccionar las filas de la matriz original 
+ * mediante el cambio de filas por columnas y las columnas por las filas
+ * en una nueva matriz)
+ * @author Cinthya G, Iker J, Valeria R
+ *
+ */
 public class MatrixTranspose extends UnaryOperator{
 	public MatrixTranspose() {
 	}
