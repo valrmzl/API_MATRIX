@@ -1,6 +1,7 @@
 package m.files;
 import java.io.*;
 import m.matrices.*;
+import m.vectors.*;
 
 
 /**
@@ -40,6 +41,23 @@ private String[][] doubleToStr;
 			
 			
 		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+
+	public void toSave(String file, Vector v) {
+		setFile(file);
+		try {
+		
+			BufferedWriter writer = new BufferedWriter(new FileWriter(getFullPath()));
+			for(int i = 0; i < v.getN(); i++) {
+				String vStr = String.valueOf(v.getComponent(i));
+				writer.write(vStr+",");
+			}
+			writer.close();
+			
+		} catch(IOException e) {
 			e.printStackTrace();
 		}
 	}

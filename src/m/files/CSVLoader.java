@@ -2,6 +2,7 @@ package m.files;
 
 import java.io.*;
 import m.matrices.*;
+import m.vectors.*;
 
 /**
  * Carga un archivo .csv al convertir su contenido en un arreglo
@@ -46,5 +47,26 @@ public void toLoad(String file, Matrix m) {
 			e.printStackTrace();
 		} 
 	}
+
+	public void toLoad(String file, Vector v) {
+		setFile(file);
+		
+		try {
+			BufferedReader reader = new BufferedReader(new FileReader(getFullPath()));
+			String line = reader.readLine();
+			String[] arrLine = line.split(",");
+			
+			int i = 0;
+			for(String val : arrLine) 
+				v.setComponent(i++, Double.parseDouble(val));
+			
+			reader.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+}
+
+
+
 
 }
